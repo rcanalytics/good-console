@@ -1,5 +1,5 @@
 angular.module('uiGmapgoogle-maps.directives.api.managers')
-.service 'uiGmapGoogleMapObjectManager', [ () ->
+.service 'uiGmapGoogleMapObjectManager', [ '$rootScope', ($rootScope) ->
   _availableInstances = []
   _usedInstances = []
   return {
@@ -8,6 +8,7 @@ angular.module('uiGmapgoogle-maps.directives.api.managers')
       if _availableInstances.length == 0
         instance = new google.maps.Map(parentElement, options)
         _usedInstances.push(instance)
+        $rootScope.$emit('uiGmapgoogle-maps.map-instantiated')
       else
         instance = _availableInstances.pop()
         angular.element(parentElement).append(instance.getDiv())

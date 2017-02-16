@@ -108,6 +108,7 @@ angular.module('uiGmapgoogle-maps.directives.api')
               _gMap = uiGmapGoogleMapObjectManager.createMapInstance(el.find('div')[1], mapOptions)
             else
               _gMap = new google.maps.Map(el.find('div')[1], mapOptions)
+              scope.$emit('uiGmapgoogle-maps.map-instantiated')
             _gMap['uiGmap_id'] = uiGmapuuid.generate()
 
             dragging = false
