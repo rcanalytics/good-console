@@ -1,4 +1,4 @@
-/*! angular-google-maps 2.4.1 2017-01-05
+/*! angular-google-maps 2.4.1 2017-02-16
  *  AngularJS directives for Google Maps
  *  git: https://github.com/angular-ui/angular-google-maps.git
  */
@@ -2153,7 +2153,7 @@ Nicholas McCready - https://twitter.com/nmccready
 }).call(this);
 ;(function() {
   angular.module('uiGmapgoogle-maps.directives.api.managers').service('uiGmapGoogleMapObjectManager', [
-    function() {
+    '$rootScope', function($rootScope) {
       var _availableInstances, _usedInstances;
       _availableInstances = [];
       _usedInstances = [];
@@ -2164,6 +2164,7 @@ Nicholas McCready - https://twitter.com/nmccready
           if (_availableInstances.length === 0) {
             instance = new google.maps.Map(parentElement, options);
             _usedInstances.push(instance);
+            $rootScope.$emit('uiGmapgoogle-maps.map-instantiated');
           } else {
             instance = _availableInstances.pop();
             angular.element(parentElement).append(instance.getDiv());
@@ -6813,6 +6814,7 @@ Original idea from: http://stackoverflow.com/questions/22758950/google-map-drawi
               _gMap = uiGmapGoogleMapObjectManager.createMapInstance(el.find('div')[1], mapOptions);
             } else {
               _gMap = new google.maps.Map(el.find('div')[1], mapOptions);
+              scope.$emit('uiGmapgoogle-maps.map-instantiated');
             }
             _gMap['uiGmap_id'] = uiGmapuuid.generate();
             dragging = false;
