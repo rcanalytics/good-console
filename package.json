@@ -1,5 +1,5 @@
 {
-  "name": "angular-google-maps",
+  "name": "@rcanalytics/angular-google-maps",
   "version": "2.4.1",
   "description": "AngularJS directives for Google Maps",
   "repository": {
@@ -20,7 +20,7 @@
     "directives",
     "webcomponent"
   ],
-  "main": "dist/angular-google-maps.js",
+  "main": "dist/@rcanalytics/angular-google-maps.js",
   "files": [
     "dist/*",
     "spec/coffee/helpers/google-api-mock.coffee",

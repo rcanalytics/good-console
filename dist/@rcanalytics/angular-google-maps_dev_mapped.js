@@ -1,4 +1,4 @@
-/*! angular-google-maps 2.4.1 2017-02-16
+/*! @rcanalytics/angular-google-maps 2.4.1 2017-07-20
  *  AngularJS directives for Google Maps
  *  git: https://github.com/angular-ui/angular-google-maps.git
  */
@@ -11466,7 +11466,7 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* istanbul ignore next */
 	angular.module('uiGmapgoogle-maps.wrapped')
@@ -11478,9 +11478,9 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	});
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	(function() {
 	  module.exports = {
@@ -11496,9 +11496,9 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	}).call(this);
 
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/*
 	Graph implemented as a modified incidence list. O(1) for every typical
@@ -11790,9 +11790,9 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	}).call(this);
 
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/*
 	Minimum heap, i.e. smallest node at root.
@@ -11937,9 +11937,9 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	}).call(this);
 
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/*
 	Doubly Linked.
@@ -12214,9 +12214,9 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	}).call(this);
 
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/*
 	Kind of a stopgap measure for the upcoming [JavaScript
@@ -12405,9 +12405,9 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	}).call(this);
 
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/*
 	Amortized O(1) dequeue!
@@ -12497,9 +12497,9 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	}).call(this);
 
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/*
 	Credit to Wikipedia's article on [Red-black
@@ -12960,9 +12960,9 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	}).call(this);
 
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/*
 	Good for fast insertion/removal/lookup of strings.
@@ -13213,7 +13213,7 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	}).call(this);
 
 
-/***/ }
+/***/ })
 /******/ ]);;angular.module('uiGmapgoogle-maps.wrapped')
 .service('uiGmapMarkerSpiderfier', [ 'uiGmapGoogleMapApi', function(GoogleMapApi) {
   var self = this;
