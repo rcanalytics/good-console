@@ -12,7 +12,11 @@ const GoodConsole = require('..');
 
 // Declare internals
 
-const internals = {};
+const internals = {
+    settings : {
+        separator : ''
+    }
+};
 
 internals.ops = {
     event: 'ops',
@@ -122,14 +126,14 @@ describe('GoodConsole', () => {
                 reader.once('end', () => {
 
                     expect(out.data).to.have.length(1);
-                    expect(out.data[0]).to.be.equal('{"timestamp":"2016-03-18T01:33:30.957Z","tags":["response"],"data":{"instance":"http://localhost:61253","method":"post","path":"/data","query":{"name":"adam"},"statusCode":200,"responseTimeMs":150,"pid":16014}}');
+                    expect(out.data[0]).to.be.equal('{"timestamp":"2016-03-18T01:33:30.957Z","tags":["response"],"data":{"instance":"http://localhost:61253","method":"post","path":"/data","query":{"name":"adam"},"statusCode":200,"responseTimeMs":150,"pid":16014}}\n');
                     done();
                 });
             });
 
             it('returns a formatted string for "response" events without a query', { plan: 2 }, (done) => {
 
-                const reporter = new GoodConsole();
+                const reporter = new GoodConsole(internals.settings);
                 const out = new Streams.Writer();
                 const reader = new Streams.Reader();
 
@@ -150,7 +154,7 @@ describe('GoodConsole', () => {
 
             it('returns a formatted string for "response" events without a statusCode', { plan: 2 }, (done) => {
 
-                const reporter = new GoodConsole();
+                const reporter = new GoodConsole(internals.settings);
                 const out = new Streams.Writer();
                 const reader = new Streams.Reader();
 
@@ -170,28 +174,9 @@ describe('GoodConsole', () => {
                 });
             });
 
-            it('returns a formatted string for "response" events uncolored', { plan: 2 }, (done) => {
-
-                const reporter = new GoodConsole({ color: false });
-                const out = new Streams.Writer();
-                const reader = new Streams.Reader();
-
-                reader.pipe(reporter).pipe(out);
-
-                reader.push(internals.response);
-                reader.push(null);
-
-                reader.once('end', () => {
-
-                    expect(out.data).to.have.length(1);
-                    expect(out.data[0]).to.be.equal('{"timestamp":"2016-03-18T01:33:30.957Z","tags":["response"],"data":{"instance":"http://localhost:61253","method":"post","path":"/data","query":{"name":"adam"},"statusCode":200,"responseTimeMs":150,"pid":16014}}');
-                    done();
-                });
-            });
-
             it('returns a formatted string for "response" events with local time', { plan: 2 }, (done) => {
 
-                const reporter = new GoodConsole({ utc: false });
+                const reporter = new GoodConsole({ utc: false, separator : '' });
                 const out = new Streams.Writer();
                 const reader = new Streams.Reader();
 
@@ -215,7 +200,7 @@ describe('GoodConsole', () => {
 
             it('returns a formatted string for "response" events with "head" as method', { plan: 2 }, (done) => {
 
-                const reporter = new GoodConsole();
+                const reporter = new GoodConsole(internals.settings);
                 const out = new Streams.Writer();
                 const reader = new Streams.Reader();
 
@@ -237,7 +222,7 @@ describe('GoodConsole', () => {
 
             it('returns a formatted string for "response" events with "statusCode" 500', { plan: 2 }, (done) => {
 
-                const reporter = new GoodConsole();
+                const reporter = new GoodConsole(internals.settings);
                 const out = new Streams.Writer();
                 const reader = new Streams.Reader();
 
@@ -259,7 +244,7 @@ describe('GoodConsole', () => {
 
             it('returns a formatted string for "response" events with "statusCode" 400', { plan: 2 }, (done) => {
 
-                const reporter = new GoodConsole();
+                const reporter = new GoodConsole(internals.settings);
                 const out = new Streams.Writer();
                 const reader = new Streams.Reader();
 
@@ -281,7 +266,7 @@ describe('GoodConsole', () => {
 
             it('returns a formatted string for "response" events with "statusCode" 300', { plan: 2 }, (done) => {
 
-                const reporter = new GoodConsole();
+                const reporter = new GoodConsole(internals.settings);
                 const out = new Streams.Writer();
                 const reader = new Streams.Reader();
 
@@ -306,7 +291,7 @@ describe('GoodConsole', () => {
 
             it('returns a formatted string for "ops" events', { plan: 2 }, (done) => {
 
-                const reporter = new GoodConsole();
+                const reporter = new GoodConsole(internals.settings);
                 const out = new Streams.Writer();
                 const reader = new Streams.Reader();
 
@@ -330,7 +315,7 @@ describe('GoodConsole', () => {
 
             it('returns a formatted string for "error" events', { plan: 2 }, (done) => {
 
-                const reporter = new GoodConsole();
+                const reporter = new GoodConsole(internals.settings);
                 const out = new Streams.Writer();
                 const reader = new Streams.Reader();
 
@@ -352,7 +337,7 @@ describe('GoodConsole', () => {
 
             it('returns a formatted string for "request" events', { plan: 2 }, (done) => {
 
-                const reporter = new GoodConsole();
+                const reporter = new GoodConsole(internals.settings);
                 const out = new Streams.Writer();
                 const reader = new Streams.Reader();
 
@@ -374,7 +359,7 @@ describe('GoodConsole', () => {
 
             it('returns a formatted string for "log" and "default" events', { plan: 2 }, (done) => {
 
-                const reporter = new GoodConsole();
+                const reporter = new GoodConsole(internals.settings);
                 const out = new Streams.Writer();
                 const reader = new Streams.Reader();
 
@@ -393,7 +378,7 @@ describe('GoodConsole', () => {
 
             it('returns a formatted string for "default" events without data', { plan: 2 }, (done) => {
 
-                const reporter = new GoodConsole();
+                const reporter = new GoodConsole(internals.settings);
                 const out = new Streams.Writer();
                 const reader = new Streams.Reader();
 
@@ -415,7 +400,7 @@ describe('GoodConsole', () => {
 
             it('returns a formatted string for "default" events with data as object', { plan: 2 }, (done) => {
 
-                const reporter = new GoodConsole();
+                const reporter = new GoodConsole(internals.settings);
                 const out = new Streams.Writer();
                 const reader = new Streams.Reader();
 
@@ -437,7 +422,7 @@ describe('GoodConsole', () => {
 
             it('returns a formatted string for "default" events with data as object', { plan: 2 }, (done) => {
 
-                const reporter = new GoodConsole();
+                const reporter = new GoodConsole(internals.settings);
                 const out = new Streams.Writer();
                 const reader = new Streams.Reader();
 
@@ -459,7 +444,7 @@ describe('GoodConsole', () => {
 
             it('returns a formatted string for "default" events with data as Error', { plan: 2 }, (done) => {
 
-                const reporter = new GoodConsole();
+                const reporter = new GoodConsole(internals.settings);
                 const out = new Streams.Writer();
                 const reader = new Streams.Reader();
 
@@ -474,7 +459,7 @@ describe('GoodConsole', () => {
                 reader.once('end', () => {
 
                     expect(out.data).to.have.length(1);
-                    expect(out.data[0].split('\n')[0]).to.be.equal('{"timestamp":"2016-03-18T01:33:30.957Z","tags":["request","user","info"],"data":{"message":"you logged an error","stack":"Error: you logged an error\\n    at /Users/samalbert/Downloads/good-console-master/test/index.js:469:37\\n    at Immediate._onImmediate (/Users/samalbert/Downloads/good-console-master/node_modules/lab/lib/runner.js:647:36)\\n    at processImmediate [as _immediateCallback] (timers.js:383:17)"}}');
+                    expect(out.data[0].split('\n')[0]).to.be.equal('{"timestamp":"2016-03-18T01:33:30.957Z","tags":["request","user","info"],"data":{"message":"you logged an error","stack":"Error: you logged an error\\n    at /Users/samalbert/Downloads/good-console-master/test/index.js:454:37\\n    at Immediate._onImmediate (/Users/samalbert/Downloads/good-console-master/node_modules/lab/lib/runner.js:647:36)\\n    at processImmediate [as _immediateCallback] (timers.js:383:17)"}}');
                     done();
                 });
             });
