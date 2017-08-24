@@ -1,7 +1,7 @@
 {
   "name": "@rcanalytics/good-console",
-  "version": "6.4.0",
-  "repository": "git://github.com/hapijs/good-console",
+  "version": "6.4.1",
+  "repository": "ssh://git@rcanalytics.codefactori.com:7999/an/good-console.git",
   "description": "Console broadcasting for Good process monitor",
   "main": "lib/index.js",
   "scripts": {
