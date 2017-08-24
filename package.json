@@ -1,0 +1,24 @@
+{
+  "name": "@rcanalytics/good-console",
+  "version": "6.4.0",
+  "repository": "git://github.com/hapijs/good-console",
+  "description": "Console broadcasting for Good process monitor",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "lab -t 100 -vLa code"
+  },
+  "dependencies": {
+    "hoek": "4.x.x",
+    "joi": "8.1.x",
+    "json-stringify-safe": "5.0.x",
+    "moment": "2.15.x"
+  },
+  "devDependencies": {
+    "code": "3.x.x",
+    "lab": "10.x.x"
+  },
+  "engines": {
+    "node": ">=4.x.x"
+  },
+  "license": "BSD-3-Clause"
+}
