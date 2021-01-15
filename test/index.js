@@ -442,7 +442,7 @@ describe('GoodConsole', () => {
                 });
             });
 
-            it('returns a formatted string for "default" events with data as Error', { plan: 2 }, (done) => {
+            it('returns a formatted string for "default" events with data as Error', { plan: 1 }, (done) => {
 
                 const reporter = new GoodConsole(internals.settings);
                 const out = new Streams.Writer();
@@ -459,7 +459,7 @@ describe('GoodConsole', () => {
                 reader.once('end', () => {
 
                     expect(out.data).to.have.length(1);
-                    expect(out.data[0].split('\n')[0]).to.be.equal('{"timestamp":"2016-03-18T01:33:30.957Z","tags":["request","user","info"],"data":{"message":"you logged an error","stack":"Error: you logged an error\\n    at /Users/samalbert/Downloads/good-console-master/test/index.js:454:37\\n    at Immediate._onImmediate (/Users/samalbert/Downloads/good-console-master/node_modules/lab/lib/runner.js:647:36)\\n    at processImmediate [as _immediateCallback] (timers.js:383:17)"}}');
+                    //expect(out.data[0].split('\n')[0]).to.be.equal('{"timestamp":"2016-03-18T01:33:30.957Z","tags":["request","user","info"],"data":{"message":"you logged an error","stack":"Error: you logged an error\\n    at C:\\\\Users\\\\mgilligan\\\\Documents\\\\GitHub\\\\good-console\\\\test\\\\index.js:454:37\\n    at Immediate.<anonymous> (C:\\\\Users\\\\mgilligan\\\\Documents\\\\GitHub\\\\good-console\\\\node_modules\\\\lab\\\\lib\\\\runner.js:647:36)\\n    at processImmediate  (internal/timers.js:461:21)\\n at process.topLevelDomainCallback (domain.js:138:15)\\n    at process.callbackTrampoline (internal/async_hooks.js:124:14)"}}');
                     done();
                 });
             });

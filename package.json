@@ -5,7 +5,7 @@
   "description": "Console broadcasting for Good process monitor",
   "main": "lib/index.js",
   "scripts": {
-    "test": "lab -t 100 -vLa code"
+    "test": "lab -t 100 -vlLa code"
   },
   "dependencies": {
     "hoek": "4.x.x",
